@@ -1,0 +1,191 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    @media screen and (max-width: 768px) {
+        .elemento-escondido {
+            width: 100%;
+            flex-direction: column;
+        }
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        color: #333;
+        padding: 90px;
+        text-align: center;
+    }
+
+    .l4j {
+        position: fixed;
+        margin-left: 25%;
+        margin-top: -29%;
+    }
+
+    .social {
+        position: fixed;
+        top: 25%;
+        left: 55%;
+
+        padding: 5%;
+        width: 20%;
+        height: 0%;
+
+        background-color: #ffffff;
+        border: 1px solid #000;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        margin-top: 20%;
+        font-size: Arial;
+        font-weight: bold;
+    }
+
+    .social p {
+        margin-top: -30%;
+    }
+
+    .social img {
+        margin-top: 0%;
+    }
+
+    .container {
+        float: left;
+        position: fixed;
+        top: 30%;
+        left: 10%;
+        margin: 0 auto;
+        padding: 20px;
+        width: 33%;
+        height: 500px;
+        background-color: #ffffff;
+        border: 1px solid #000;
+        border-radius: 20px;
+        margin-top: -11%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 90%;
+        padding: 10px;
+        border: 2px solid #ccc;
+    }
+
+    .form-group button {
+        width: 90%;
+        padding: 3%;
+        background-color: #0051ff;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .form-group button:hover {
+        background-color: #000000;
+    }
+
+    .button {
+        background-color: #000000;
+        color: #ffffff;
+    }
+</style>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login - Looking for Job</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form method="post" action="log.php" id="formlogin" name="formlogin;"></form>
+
+        <h2>Login</h2>
+
+        <div class="form-group">
+            <input type="email" id="email" placeholder="Digite seu e-mail" name="email" required>
+        </div> <br>
+        <div class="form-group">
+            <input type="password" id="senha" placeholder="Digite sua senha" name="senha" required>
+
+        </div> <br>
+        <div class="form-group">
+            <button type="submit" id="login">Login</button>
+        </div>
+
+        <br>
+        <p>OU</p><br>
+
+        <div class="form-group">
+            <button type="submit" id="cads">Cadastre-se</button>
+        </div> <br>
+
+        <button type="submit" id="voltar" class="button">Voltar</button>
+
+
+        <img class="l4j" src="../img/L4Jdark.png" width="400" height="400">
+    </div>
+    </form>
+
+    <div class="social">
+        <p>Siga-nos nas redes sociais</p>
+        <a href="https://x.com/Lookingfor90046?s=08">
+            <img src="../img/twitterDark.png" class="twitter" width="50px" height="50px"> </a>
+
+        <a href="https://instagram.com/looking4forjob?igshid=NzZlODBkYWE4Ng==">
+            <img src="../img/instagramDark.png" class="instagram" width="50px" height="50px"> </a>
+
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+<script>
+    var cads = document.getElementById("cads");
+    var login = document.getElementById("login");
+    var voltar = document.getElementById("voltar");
+
+    cads.addEventListener("click", function () {
+        window.location.href = "cads.html";
+    });
+
+    login.addEventListener("click", function () {
+        window.location.href = "log.php";
+    });
+
+    voltar.addEventListener("click", function () {
+        // Redirecione para outra página
+        window.location.href = "../index.html";
+    });
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado do Teste Vocacional</title>
+</head>
+
+<body>
+    <h1>Resultado do Teste Vocacional</h1>
+    <div id="resultado"></div>
+
+    <script>
+        // Obter parâmetros da URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        // Somando as pontuações de 'azul1' e 'azul2' para exibir como 'azul'
+        let pontuacaoAzul = 0;
+
+        if (urlParams.has('azul1')) {
+            pontuacaoAzul += parseInt(urlParams.get('azul1')) || 0;
+        }
+
+        if (urlParams.has('azul2')) {
+            pontuacaoAzul += parseInt(urlParams.get('azul2')) || 0;
+        }
+
+        // Exibindo o resultado na página
+        const resultadoDiv = document.getElementById('resultado');
+        resultadoDiv.innerHTML = '<p>Pontuação por cor:</p><ul>';
+        resultadoDiv.innerHTML += `<li>Azul: ${pontuacaoAzul} ponto(s)</li>`;
+        // Você pode adicionar outras cores aqui, seguindo o mesmo padrão
+
+        resultadoDiv.innerHTML += '</ul>';
+    </script>
+</body>
+
+</html>

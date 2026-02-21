@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" type="text/css" href="../menu/perfil.css"> <!--Arrumar-->
+</head>
+
+<body>
+
+    <div class="menu">
+        <ul>
+            <li><a href="../menu/inicio.html" class="menu-texto"> <img src="../img/L4J.png" width="100"
+                        height="100"></a>
+            </li>
+            <li><a href="../test/basico.html" class="menu-texto">Teste Básico</a></li>
+            <li><a href="../menu/work.html" class="menu-texto">Empregos disponíveis</a></li>
+            <li><a href="../test/avan.html" class="menu-texto">Teste Avançado</a></li>
+        </ul>
+    </div>
+
+    <div class='perfil'>
+
+        <h2 onclick="habilitarEdicao()" id="nome" class="nome">João Carlos <img src="../img/lapis.png" class="lapis"
+                width="20" height="20"></h2>
+
+        <form id="formNome" style="display: none;" onsubmit="salvarNome(event)">
+            <input type="text" id="novoNome" required>
+            <button type="submit"> <img src="../img/lapis.png" class="lapis" width="10" height="10"></button>
+        </form>
+
+        <script>
+            function habilitarEdicao() {
+                document.getElementById('nome').style.display = 'none';
+                document.getElementById('formNome').style.display = 'block';
+                document.getElementById('novoNome').value = document.getElementById('nome').innerText;
+            }
+
+            function salvarNome(event) {
+                event.preventDefault();
+                var novoNome = document.getElementById('novoNome').value;
+                document.getElementById('nome').innerText = novoNome;
+                document.getElementById('formNome').style.display = 'none';
+                document.getElementById('nome').style.display = 'block';
+            }
+        </script>
+
+        <form action="perfil.php" method="post">
+
+            <div class="perfot">
+                <img src="../img/perfil.png" class="p" width="100" height="100">
+
+                <label for="inputImagem" id="imagemLabel">
+                    <img src="../img/foto.png" alt="Escolher arquivo" class="f" width="35" height="27">
+                </label>
+            </div>
+
+            <!-- Campo de seleção de arquivo -->
+            <input type="file" name="inputImagem" id="inputImagem" accept="image/*" onchange="this.form.submit()">
+        </form>
+
+        <form action="perfil.php" method="POST">
+            <div class="form">
+
+                <div class="categoria">
+
+                    <input type="email" id="email" placeholder="E-mail" name="email" required>
+
+                    <input type="celular" id="celular" placeholder="Celular" name="celular" required>
+
+                    <input type="cep" id="cep" placeholder="CEP" name="cep" required>
+
+                    <input type="idade" id="idade" placeholder="Idade" name="idade" required>
+                </div><br><br><br><br>
+
+                <div class="categoria">
+
+                    <input type="senha" id="senha" placeholder="Senha" name="senha" required>
+
+                    <input type="rg" id="rg" placeholder="RG" name="rg" required>
+
+                    <select type="especialidade" id="especialidade" placeholder="Especialidade" name="Especialidade"
+                        required>
+                        <option value="esp">Especialidade</option>
+                        <option value="TI">Técnico em informática</option>
+                        <option value="MKT">Marketing</option>
+                        <option value="SGT">Segurança do Trabalho</option>
+                        <option value="LOG">Logística</option>
+                    </select>
+
+                </div>
+            </div>
+            <input type="submit" class="salvar" value="Salvar Perfil">
+    </div>
+    </form>
+    </div>
+
+</body>
+
+</html>

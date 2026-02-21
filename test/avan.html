@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Avançado - Looking for Job</title>
+    <link rel="stylesheet" type="text/css" href="../test/avan.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <script src="avan.js"></script>
+    <div class="menu">
+        <ul>
+            <li><a href="../menu/inicio.html" class="menu-texto"> <img src="../img/L4J.png" width="100"
+                        height="100"></a>
+            </li>
+            <li><a href="../menu/basico2.html" class="menu-texto">Teste Básico</a></li>
+            <li><a href="../menu/work2.html" class="menu-texto">Empregos disponíveis</a></li>
+            <li><a href="../test/avan.html" class="menu-texto">Teste Avançado</a></li>
+            <li><a href="../menu/perfil.html" class="menu-texto" style="margin-left:580%;"><img src="../img/perfil.png"
+                        width="70" height="70"></a></li>
+        </ul>
+    </div>
+
+    <h1>Teste Avançado</h1> <br>
+    <h3 style="color: #00ff5e">Suas escolhas ao marcar as questões
+        terão um impacto direto nas áreas que serão abordadas, bem como na
+        quantidade total de questões apresentadas.</h3>
+
+    <div class="opcoes">
+        <form>
+            <strong>
+                <li style="list-style-type: none;">Qual local de trabalho você trabalharia?</li>
+            </strong>
+            <input type="checkbox" value="check1" id="check1" onchange="verificar()" name="pergunta"> De forma remota
+            <br>
+            <input type="checkbox" value="check2" id="check2" onchange="verificar()" name="pergunta"> Em um
+            estabelecimento (Shopping,
+            Escola, Restaurante e
+            etc..)
+            <br>
+            <input type="checkbox" value="check3" id="check3" onchange="verificar()" name="pergunta"> Em uma fábrica
+            <br>
+            <input type="checkbox" value="check4" id="check4" onchange="verificar()" name="pergunta"> Em um lugar aberto
+            (Rua, Campo)
+            <br>
+            <input type="checkbox" value="check5" id="check5" onchange="verificar()" name="pergunta"> Em uma empresa
+            <br>
+
+            <img src="../img/L4J.png" width="200" height="200" class="l4j">
+            <h3 id="aviso" style="color: #ff0000">As perguntas terão ligação com as seguintes áreas:
+                Tecnologia, Saúde, Turismo, Finanças, Engenharia, Artes, Comunicação,
+                Educação, Psicologia, Jurídico, Militar, Meio-ambiente, Gastronomia,
+                Administração, Esporte</h3> <br>
+            <button type="button" id="prox" onclick="selecionarPerguntas()" style="display:none;">Próximo</button>
+        </form>
+    </div>
+
+    <div class="perguntas" style="display: none;">
+        <!-- As perguntas aparecem aqui -->
+    </div>
+
+    <script>
+        function verificar() {
+            const check1 = document.getElementById('check1');
+            const check2 = document.getElementById('check2');
+            const check3 = document.getElementById('check3');
+            const check4 = document.getElementById('check4');
+            const check5 = document.getElementById('check5');
+
+            const prox = document.getElementById('prox');
+
+            if (check1.checked || check2.checked || check3.checked || check4.checked || check5.checked) {
+                prox.style.display = 'block'; // Exibir o botão
+            } else {
+                prox.style.display = 'none'; // Ocultar o botão
+            }
+        }
+
+        function selecionarPerguntas() {
+
+            const opcoesSelecionadas = Array.from(document.querySelectorAll('input[name="pergunta"]:checked')).map(checkbox => checkbox.value);
+
+            if (opcoesSelecionadas.length > 0) {
+                const perguntasDiv = document.querySelector('.perguntas');
+                perguntasDiv.style.display = 'block';
+
+                const perguntasGeradas = gerarPerguntas(opcoesSelecionadas);
+
+                // Exibir as perguntas geradas na tela
+                perguntasDiv.innerHTML = perguntasGeradas.join('<br>');
+            } else {
+                alert('Selecione ao menos uma opção');
+            }
+        }
+
+        //Esconde o texto e o botão
+        document.getElementById('prox').addEventListener('click', function () {
+            document.getElementById('prox').style.display = 'none';
+        });
+
+        document.getElementById('prox').addEventListener('click', function () {
+            document.getElementById('aviso').style.display = 'none';
+        });
+        //Esconde o texto e o botão
+
+
+        function gerarPerguntas(opcoes) {
+            let perguntas = [];
+
+            // Lógica para gerar perguntas com base nas opções selecionadas
+            opcoes.forEach(pergunta => {
+                // Aqui você pode gerar as perguntas conforme cada opção selecionada
+                // Por exemplo, se pergunta for 'check1', adicione perguntas específicas
+                if (pergunta === 'check1') {
+                    perguntas.push('<strong> <ol> <li>Você é uma pessoa tecnológica e inteligente?</li> </ol> </strong>');
+                    perguntas.push('<input type="radio" name="sim" id="esc1"> Sim');
+                    perguntas.push('<input type="radio" name="mom" id="esc2"> Mais o menos');
+                    perguntas.push('<input type="radio" name="ns" id="esc3"> Não sei');
+                    perguntas.push('<input type="radio" name="nao" id="esc4"> Não');
+                } else if (pergunta === 'check2') {
+                    perguntas.push('Pergunta 1 relacionada à check2');
+                    perguntas.push('Pergunta 2 relacionada à check2');
+                    perguntas.push('Pergunta 3 relacionada à check2');
+                } else if (pergunta === 'check3') {
+                    perguntas.push('Pergunta 1 relacionada à check3');
+                    perguntas.push('Pergunta 2 relacionada à check3');
+                    perguntas.push('Pergunta 3 relacionada à check3');
+                }
+                // Adicione mais lógica conforme necessário para outras opções
+            });
+
+            return perguntas;
+        }
+    </script>
+
+    <button type="button" id="finalizar" onclick="finalizar()" style="display:none;">Finalizar</button>
+
+    <div class="rodape">
+        <footer>
+            <ul>
+                <img src="../img/L4Jdark.png" width="100" height="100">
+
+                <div class="midia-social">
+                    <a href="https://x.com/Lookingfor90046?s=08">
+                        <img src="../img/twitterDark.png" width="50px" height="50px" width="25px" height="25px"> </a>
+
+                    <a href="https://instagram.com/looking4forjob?igshid=NzZlODBkYWE4Ng==
+                            ">
+                        <img src="../img/instagramDark.png" width="50px" height="50px"> </a>
+
+                </div>
+
+            </ul>
+
+            <p>lookingforjobprofissionais@gmail.com</p>
+            <p>&copy; 2023 Direitos reservados Looking For Job</p>
+        </footer>
+    </div>
+</body>
+
+</html>
